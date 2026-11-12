@@ -488,9 +488,9 @@ function FriendDetail({ friend, balance, onBack, onRemoved, refresh, version }) 
                   {e.kind === 'settlement' ? ' · tap to undo' : ''}
                 </span>
               </span>
-              <span className={`tx-amt ${e.amount > 0 ? 'pos' : 'neg'}`}>
-                {e.kind === 'split' ? (e.amount > 0 ? 'owes you ' : 'you owe ') : ''}
-                {money(Math.abs(e.amount))}
+              <span className="tx-amt">
+                <span className={e.amount > 0 ? 'pos' : 'neg'}>{money(Math.abs(e.amount))}</span>
+                {e.kind === 'split' && <span className="tx-sub">{e.amount > 0 ? 'owes you' : 'you owe'}</span>}
               </span>
             </li>
           ))}
